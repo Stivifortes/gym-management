@@ -1,7 +1,7 @@
 const Payment = require('../models/Payment');
 const Subscription = require('../models/Subscription');
+const User = require('../models/User');
 const Plan = require('../models/Plan');
-const User = require('../models/user');
 const { sendPaymentConfirmation } = require('../services/emailService');
 
 exports.createPayment = async (req, res) => {
