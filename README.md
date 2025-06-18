@@ -1,99 +1,56 @@
-# Gym IEFP - Sistema de Gestão de Academia
+# Sistema de Gestão de Academia
 
-Sistema completo de gestão de academia com backend em Node.js/Express e frontend em React.
+Sistema completo para gestão de academias, desenvolvido com backend em Node.js/Express e frontend em React. Ideal para academias que desejam automatizar processos, melhorar a experiência dos alunos e facilitar a administração.
 
-## 🚀 Deploy Gratuito
+## 🚩 Visão Geral
 
-### Backend (Render.com)
+Este sistema permite o controle total de uma academia, desde o cadastro de alunos até a gestão de planos, pagamentos, relatórios e comunicação por email. Tudo em uma interface moderna e intuitiva.
 
-1. **Crie conta no Render.com**
-   - Acesse [render.com](https://render.com)
-   - Faça login com GitHub
+## 🎯 Funcionalidades Principais
 
-2. **Conecte o repositório**
-   - Clique em "New Web Service"
-   - Conecte este repositório
-   - Configure:
-     - **Name**: `gym-iefp-backend`
-     - **Root Directory**: `backend`
-     - **Build Command**: `npm install`
-     - **Start Command**: `npm start`
+### 1. Autenticação de Usuários
+- Cadastro e login seguro com JWT.
+- Diferentes níveis de acesso (admin, gestor, aluno).
+- Recuperação de senha por email.
 
-3. **Configure variáveis de ambiente**
-   - JWT_SECRET (gere uma chave segura)
-   - STRIPE_SECRET_KEY (se usar pagamentos)
-   - SENDGRID_API_KEY (se usar emails)
-   - CORS_ORIGIN (URL do frontend)
+### 2. Gestão de Planos
+- Criação, edição e exclusão de planos de academia.
+- Definição de preços, duração e benefícios de cada plano.
+- Visualização de planos ativos e inativos.
 
-### Frontend - Opções de Deploy
+### 3. Subscrições
+- Matrícula de alunos em planos.
+- Controle de vigência e renovação automática de subscrições.
+- Histórico de subscrições por aluno.
 
-#### Opção 1: Vercel.com (Recomendado para React)
+### 4. Pagamentos
+- Integração com Stripe para pagamentos online.
+- Registro de pagamentos manuais.
+- Visualização de status de pagamento (pago, pendente, atrasado).
 
-1. **Crie conta no Vercel.com**
-   - Acesse [vercel.com](https://vercel.com)
-   - Faça login com GitHub
+### 5. Relatórios
+- Geração de relatórios financeiros e de frequência.
+- Exportação de dados para análise.
+- Filtros por período, plano e status.
 
-2. **Conecte o repositório**
-   - Clique em "New Project"
-   - Conecte este repositório
-   - Configure:
-     - **Framework Preset**: Vite
-     - **Root Directory**: `frontend`
-     - **Build Command**: `npm run build`
-     - **Output Directory**: `dist`
+### 6. Envio de Emails
+- Notificações automáticas de renovação, pagamento e boas-vindas.
+- Integração com SendGrid.
+- Personalização de templates de email.
 
-3. **Configure variáveis de ambiente**
-   - VITE_API_URL (URL do backend no Render)
+## 🖥️ Como Usar
 
-#### Opção 2: Netlify.com (Alternativa excelente)
+1. **Administra a academia:**
+   - Cadastre planos e defina regras.
+   - Gerencie usuários e permissões.
+2. **Aluno se cadastra:**
+   - Escolhe um plano e realiza o pagamento.
+   - Recebe confirmação e acesso ao painel.
+3. **Acompanhe tudo pelo dashboard:**
+   - Veja relatórios, status de pagamentos e subscrições.
+   - Receba notificações automáticas por email.
 
-1. **Crie conta no Netlify.com**
-   - Acesse [netlify.com](https://netlify.com)
-   - Faça login com GitHub
-
-2. **Conecte o repositório**
-   - Clique em "New site from Git"
-   - Conecte este repositório
-   - Configure:
-     - **Base directory**: `frontend`
-     - **Build command**: `npm run build`
-     - **Publish directory**: `dist`
-
-3. **Configure variáveis de ambiente**
-   - VITE_API_URL (URL do backend no Render)
-
-4. **Configure redirecionamentos** (importante para SPA):
-   - Crie arquivo `frontend/public/_redirects` com:
-   ```
-   /*    /index.html   200
-   ```
-
-## 🛠️ Desenvolvimento Local
-
-### Backend
-```bash
-cd backend
-npm install
-npm run dev
-```
-
-### Frontend
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-## 📋 Funcionalidades
-
-- ✅ Autenticação de usuários
-- ✅ Gestão de planos de academia
-- ✅ Subscrições
-- ✅ Pagamentos (Stripe)
-- ✅ Relatórios
-- ✅ Envio de emails
-
-## 🔧 Tecnologias
+## 🔧 Tecnologias Utilizadas
 
 **Backend:**
 - Node.js + Express
@@ -109,10 +66,20 @@ npm run dev
 - React Router
 - Axios
 
-## 📝 Notas de Deploy
+## 🛠️ Desenvolvimento Local
 
-- O backend usa SQLite que é persistido no Render
-- Para produção, considere migrar para PostgreSQL
-- Configure CORS adequadamente para permitir comunicação entre frontend e backend
-- Use variáveis de ambiente para todas as chaves secretas
-- **Netlify vs Vercel**: Ambos são excelentes, Netlify tem plano gratuito mais generoso
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+
+## 📝 Notas
+- O sistema é modular e pode ser expandido conforme a necessidade da academia.
