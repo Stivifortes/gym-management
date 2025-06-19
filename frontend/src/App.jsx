@@ -1,44 +1,25 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider, useAuth } from './contexts/AuthContext';
-import { Login } from './components/Login';
-import { Dashboard } from './components/Dashboard';
-import { CssBaseline } from '@mui/material';
-
-// Componente para proteger rotas que precisam de autenticação
-const PrivateRoute = ({ children }) => {
-    const { isAuthenticated } = useAuth();
-    return isAuthenticated ? children : <Navigate to="/login" />;
-};
-
-function AppRoutes() {
-    const { isAuthenticated } = useAuth();
-
-    return (
-        <Routes>
-            <Route 
-                path="/login" 
-                element={isAuthenticated ? <Navigate to="/" /> : <Login />} 
-            />
-            <Route 
-                path="/" 
-                element={
-                    <PrivateRoute>
-                        <Dashboard />
-                    </PrivateRoute>
-                } 
-            />
-        </Routes>
-    );
-}
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import Landing from './components/Landing';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
     return (
-        <BrowserRouter>
-            <AuthProvider>
-                <CssBaseline />
-                <AppRoutes />
-            </AuthProvider>
-        </BrowserRouter>
+        <AuthProvider>
+            <Router>
+                <Routes>
+                    <Route path="/" element={<Landing />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Login isRegister />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/profile" element={<Profile />} />
+                    <Route path="*" element={<Navigate to="/" />} />
+                </Routes>
+            </Router>
+        </AuthProvider>
     );
 }
 

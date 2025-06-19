@@ -231,4 +231,6 @@ export const Profile = () => {
             </Snackbar>
         </Box>
     );
-}; 
+};
+
+export default Profile; 

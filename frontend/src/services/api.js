@@ -116,11 +116,11 @@ export const paymentService = {
 // Serviços de usuário
 export const userService = {
     getAll: async () => {
-        const response = await api.get('/auth/users');
+        const response = await api.get('/users');
         return response.data;
     },
     getById: async (id) => {
-        const response = await api.get(`/auth/user/${id}`);
+        const response = await api.get(`/users/${id}`);
         return response.data;
     },
     create: async (data) => {
@@ -128,11 +128,11 @@ export const userService = {
         return response.data;
     },
     update: async (id, data) => {
-        const response = await api.put(`/auth/user/${id}`, data);
+        const response = await api.put(`/users/${id}`, data);
         return response.data;
     },
     delete: async (id) => {
-        const response = await api.delete(`/auth/user/${id}`);
+        const response = await api.delete(`/users/${id}`);
         return response.data;
     }
 };

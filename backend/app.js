@@ -12,7 +12,28 @@ require('./src/models');
 
 const app = express();
 
-app.use(cors());
+// CORS dinâmico por ambiente
+let allowedOrigins = [];
+if (process.env.NODE_ENV === 'production') {
+  allowedOrigins = (process.env.CORS_ORIGIN || '').split(',');
+} else {
+  allowedOrigins = [
+    'http://localhost:5173',
+    'http://localhost:3000',
+    process.env.CORS_ORIGIN
+  ];
+}
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(express.json());
 
 // Swagger documentation route

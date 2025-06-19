@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { 
     Box, 
     TextField, 
@@ -13,23 +13,19 @@ import { useAuth } from '../contexts/AuthContext';
 export const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
     const { login } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
 
         try {
             const result = await login(email, password);
             if (result.success) {
                 navigate('/');
-            } else {
-                setError(result.error);
             }
         } catch (error) {
-            setError('Erro ao fazer login. Tente novamente.');
+            console.error('Erro ao fazer login. Tente novamente.', error);
         }
     };
 
@@ -47,11 +43,6 @@ export const Login = () => {
                     Login
                 </Typography>
                 <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
-                    {error && (
-                        <Alert severity="error" sx={{ mb: 2 }}>
-                            {error}
-                        </Alert>
-                    )}
                     <TextField
                         margin="normal"
                         required
@@ -84,8 +75,16 @@ export const Login = () => {
                     >
                         Entrar
                     </Button>
+                    <div className="login-links">
+                        <Link to="/" className="login-link">Voltar à página inicial</Link>
+                        <span>
+                            Não tem conta? <Link to="/register" className="login-link">Registar</Link>
+                        </span>
+                    </div>
                 </Box>
             </Box>
         </Container>
     );
-}; 
+};
+
+export default Login; 

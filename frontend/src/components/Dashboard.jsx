@@ -1219,4 +1219,6 @@ export const Dashboard = () => {
             </Snackbar>
         </Box>
     );
-}; 
+};
+
+export default Dashboard; 
