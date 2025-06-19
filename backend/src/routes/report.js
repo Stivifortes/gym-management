@@ -2,8 +2,53 @@ const express = require('express');
 const router = express.Router();
 const { Op } = require('sequelize');
 const Subscription = require('../models/Subscription');
-// Estatísticas gerais para o dashboard
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     DashboardStats:
+ *       type: object
+ *       properties:
+ *         totalSubscriptions:
+ *           type: integer
+ *           description: Total number of subscriptions
+ *         subscriptionsLast7Days:
+ *           type: integer
+ *           description: Number of subscriptions created in the last 7 days
+ *         activeSubscriptions:
+ *           type: integer
+ *           description: Number of active subscriptions
+ *         topPlans:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               planId:
+ *                 type: integer
+ *               subscriptionCount:
+ *                 type: integer
+ *           description: Top 5 plans by subscription count
+ */
+
+/**
+ * @swagger
+ * /reports/dashboard-stats:
+ *   get:
+ *     summary: Get dashboard statistics
+ *     tags: [Reports]
+ *     responses:
+ *       200:
+ *         description: Dashboard statistics
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/DashboardStats'
+ *       500:
+ *         description: Internal server error
+ */
+
+// Estatísticas gerais para o dashboard
 router.get('/dashboard-stats', async (req, res) => {
     try {
         // Total de assinaturas
